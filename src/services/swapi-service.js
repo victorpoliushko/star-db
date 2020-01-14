@@ -1,13 +1,11 @@
 export default class SwapiService {
-
-  _apiBase = 'https://swapi.co/api';
+  _apiBase = "https://swapi.co/api";
 
   async getResource(url) {
     const res = await fetch(`${this._apiBase}${url}`);
 
     if (!res.ok) {
-      throw new Error(`Could not fetch ${url}` +
-        `, received ${res.status}`)
+      throw new Error(`Could not fetch ${url}` + `, received ${res.status}`);
     }
     return await res.json();
   }
@@ -50,7 +48,7 @@ export default class SwapiService {
   _transformPlanet(planet) {
     return {
       id: this._extractId(planet),
-      name: planet.name,
+      name: planet.id,
       population: planet.population,
       rotationPeriod: planet.rotation_period,
       diameter: planet.diameter
@@ -62,13 +60,13 @@ export default class SwapiService {
       id: this._extractId(starship),
       name: starship.name,
       model: starship.model,
-      manufacturer: starship.manufacturer,
-      costInCredits: starship.costInCredits,
-      length: starship.length,
-      crew: starship.crew,
-      passengers: starship.passengers,
-      cargoCapacity: starship.cargoCapacity
-    }
+      manufacturer: starship.manufacturer, 
+      costInCredits: starship.costInCredits, 
+      length: starship.length, 
+      crew: starship.crew, 
+      passengers: starship.passengers, 
+      cargoCapacity: starship.cargoCapacity, 
+    };
   }
 
   _transformPerson(person) {
@@ -78,6 +76,6 @@ export default class SwapiService {
       gender: person.gender,
       birthYear: person.birthYear,
       eyeColor: person.eyeColor
-    }
+    };
   }
 }
